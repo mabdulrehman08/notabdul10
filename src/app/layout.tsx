@@ -4,6 +4,9 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Muhammad Abdulrehman | Portfolio',
   description: 'Interactive resume and project portfolio for Muhammad Abdulrehman.',
+  icons: {
+    icon: '/logo.jpg',
+  },
 };
 
 export default function RootLayout({
