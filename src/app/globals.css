@@ -204,40 +204,26 @@ body {
   }
 }
 
-.project-dossier summary {
-  list-style: none;
-}
-
-.project-dossier summary::-webkit-details-marker {
-  display: none;
-}
-
-.project-dossier[open] summary {
-  background:
-    linear-gradient(90deg, rgba(244, 255, 0, 0.28), transparent 40%),
-    #ffffff;
-}
-
 .project-graph {
   position: relative;
   height: 230px;
   overflow: hidden;
-  border: 1px solid #3f3f46;
+  border: 1px solid #242424;
   border-radius: 6px;
   background:
-    radial-gradient(circle at center, rgba(167, 139, 250, 0.18), transparent 34%),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.14), transparent 34%),
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 28px),
     repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 28px),
-    #18181b;
+    #000000;
 }
 
 .graph-node {
   position: absolute;
   z-index: 2;
-  border: 1px solid #a78bfa;
+  border: 1px solid #ffffff;
   border-radius: 9999px;
-  background: #27272a;
-  box-shadow: 0 0 18px rgba(167, 139, 250, 0.32);
+  background: #090909;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.18);
 }
 
 .graph-node:not(.graph-core) {
@@ -249,7 +235,7 @@ body {
 }
 
 .graph-node:not(.graph-core):hover {
-  background: #a78bfa;
+  background: #ffffff;
   transform: scale(1.2);
 }
 
@@ -290,7 +276,7 @@ body {
   z-index: 1;
   height: 1px;
   width: 82px;
-  background: rgba(167, 139, 250, 0.54);
+  background: rgba(255, 255, 255, 0.44);
   transform-origin: left center;
 }
 
