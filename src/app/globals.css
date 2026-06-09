@@ -217,3 +217,101 @@ body {
     linear-gradient(90deg, rgba(244, 255, 0, 0.28), transparent 40%),
     #ffffff;
 }
+
+.project-graph {
+  position: relative;
+  height: 230px;
+  overflow: hidden;
+  border: 1px solid #3f3f46;
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at center, rgba(167, 139, 250, 0.18), transparent 34%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 28px),
+    #18181b;
+}
+
+.graph-node {
+  position: absolute;
+  z-index: 2;
+  border: 1px solid #a78bfa;
+  border-radius: 9999px;
+  background: #27272a;
+  box-shadow: 0 0 18px rgba(167, 139, 250, 0.32);
+}
+
+.graph-node:not(.graph-core) {
+  width: 18px;
+  height: 18px;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.graph-node:not(.graph-core):hover {
+  background: #a78bfa;
+  transform: scale(1.2);
+}
+
+.graph-core {
+  left: 50%;
+  top: 50%;
+  padding: 6px 10px;
+  color: #f4f4f5;
+  font-family: monospace;
+  font-size: 12px;
+  transform: translate(-50%, -50%);
+}
+
+.graph-node-1 {
+  left: 18%;
+  top: 22%;
+}
+
+.graph-node-2 {
+  right: 17%;
+  top: 24%;
+}
+
+.graph-node-3 {
+  left: 25%;
+  bottom: 18%;
+}
+
+.graph-node-4 {
+  right: 23%;
+  bottom: 16%;
+}
+
+.graph-line {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  height: 1px;
+  width: 82px;
+  background: rgba(167, 139, 250, 0.54);
+  transform-origin: left center;
+}
+
+.graph-line-1 {
+  transform: rotate(222deg);
+}
+
+.graph-line-2 {
+  transform: rotate(318deg);
+}
+
+.graph-line-3 {
+  transform: rotate(142deg);
+}
+
+.graph-line-4 {
+  transform: rotate(38deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .graph-node:not(.graph-core) {
+    transition: none;
+  }
+}

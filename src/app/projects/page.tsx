@@ -3,6 +3,7 @@ import Link from 'next/link';
 const projects = [
   {
     name: 'DragonsConnect',
+    slug: 'dragonsconnect',
     date: 'Dec 2025',
     stack: 'JavaScript, Python, Flask, SQL, PostgreSQL',
     tag: 'campus social layer',
@@ -17,6 +18,7 @@ const projects = [
   },
   {
     name: 'DragonRec',
+    slug: 'dragonrec',
     date: 'Sept 2025',
     stack: 'JavaScript, React, Supabase, API workflows',
     tag: 'rec-center operating system',
@@ -30,6 +32,7 @@ const projects = [
   },
   {
     name: 'Memoir',
+    slug: 'memoir',
     date: 'Oct 2025',
     stack: 'JavaScript, React, Node.js, Supabase, OpenAI',
     tag: 'memory machine',
@@ -40,6 +43,7 @@ const projects = [
   },
   {
     name: 'Hustler',
+    slug: 'hustler',
     date: 'July 2025',
     stack: 'TypeScript, React, D3.js, MongoDB',
     tag: 'income cockpit',
@@ -58,20 +62,20 @@ const links = [
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen bg-[#f6f2e8] text-[#111111]">
-      <nav className="fixed left-0 top-0 z-50 w-full border-b border-black bg-[#fffaf0]/90 backdrop-blur-md">
+    <main className="min-h-screen bg-[#18181b] text-[#f4f4f5]">
+      <nav className="fixed left-0 top-0 z-50 w-full border-b border-[#3f3f46] bg-[#18181b]/92 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
-          <Link className="font-mono text-base font-black text-black" href="/">
+          <Link className="font-mono text-base font-black text-white" href="/">
             MUHAMMAD_ABDULREHMAN
           </Link>
           <div className="flex items-center gap-1">
             {links.map((item) => (
               <Link
                 key={item.label}
-                className="group flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-[#5c5043] transition-colors hover:bg-[#f4ff00] hover:text-black"
+                className="group flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-zinc-400 transition-colors hover:bg-[#27272a] hover:text-white"
                 href={item.href}
               >
-                <span className="hidden h-5 min-w-5 items-center justify-center rounded border border-black bg-white px-1 font-mono text-[12px] text-[#5c5043] shadow-sm group-hover:text-black sm:flex">
+                <span className="hidden h-5 min-w-5 items-center justify-center rounded border border-[#52525b] bg-[#27272a] px-1 font-mono text-[12px] text-zinc-400 group-hover:text-white sm:flex">
                   {item.key}
                 </span>
                 {item.label}
@@ -81,85 +85,118 @@ export default function ProjectsPage() {
         </div>
       </nav>
 
-      <section className="project-wall mx-auto grid max-w-7xl gap-8 px-5 pb-16 pt-28 lg:grid-cols-[280px_1fr]">
-        <aside className="project-side lg:sticky lg:top-24 lg:self-start">
-          <p className="font-mono text-sm font-bold uppercase text-[#0057ff]">proof archive</p>
-          <h1 className="mt-3 text-5xl font-black leading-none text-black md:text-6xl">Projects opened up.</h1>
-          <p className="mt-5 text-base leading-7 text-[#5c5043]">
-            Same work, less spreadsheet. Each build is an open tab: what it is, what it proves, and the system shape
-            behind it.
-          </p>
-
-          <div className="mt-7 grid gap-2 font-mono text-sm">
-            {projects.map((project, index) => (
-              <a
-                key={project.name}
-                className="group grid grid-cols-[2.5rem_1fr] items-center rounded-md border border-black bg-white text-black shadow-[4px_4px_0_#111] transition-transform hover:-translate-y-0.5 hover:bg-[#f4ff00]"
-                href={`#${project.name.toLowerCase()}`}
-              >
-                <span className="border-r border-black px-3 py-3 text-center font-black">
-                  {(index + 1).toString().padStart(2, '0')}
-                </span>
-                <span className="px-3 py-3">{project.name}</span>
+      <section className="mx-auto grid max-w-7xl gap-4 px-5 pb-10 pt-24 lg:grid-cols-[245px_1fr_255px]">
+        <aside className="rounded-md border border-[#3f3f46] bg-[#202024]">
+          <div className="flex items-center justify-between border-b border-[#3f3f46] px-4 py-3">
+            <p className="font-mono text-xs uppercase text-zinc-400">vault explorer</p>
+            <span className="rounded bg-[#2f2f35] px-2 py-1 font-mono text-xs text-[#a78bfa]">projects</span>
+          </div>
+          <div className="p-3">
+            <div className="rounded border border-[#3f3f46] bg-[#18181b] px-3 py-2 font-mono text-xs text-zinc-400">
+              /portfolio/proof
+            </div>
+            <div className="mt-3 grid gap-1">
+              <div className="px-2 py-1 font-mono text-xs uppercase text-zinc-500">notes</div>
+              <a className="rounded px-2 py-2 text-sm text-zinc-300 hover:bg-[#2a2a30]" href="#overview">
+                _overview.md
               </a>
-            ))}
+              {projects.map((project) => (
+                <a
+                  key={project.name}
+                  className="rounded px-2 py-2 text-sm text-zinc-300 hover:bg-[#2a2a30]"
+                  href={`#${project.slug}`}
+                >
+                  {project.name}.md
+                </a>
+              ))}
+            </div>
           </div>
         </aside>
 
-        <div className="grid gap-5">
-          <div className="rounded-lg border border-black bg-black p-4 text-white shadow-[10px_10px_0_#0057ff]">
-            <div className="grid gap-3 font-mono text-xs uppercase sm:grid-cols-4">
-              <span className="rounded border border-white/30 px-3 py-2">status: shipped ideas</span>
-              <span className="rounded border border-white/30 px-3 py-2">mode: product systems</span>
-              <span className="rounded border border-white/30 px-3 py-2">view: expanded</span>
-              <span className="rounded border border-white/30 bg-[#f4ff00] px-3 py-2 text-black">scroll: live</span>
-            </div>
+        <div className="min-w-0 rounded-md border border-[#3f3f46] bg-[#1f1f23]">
+          <div className="flex overflow-x-auto border-b border-[#3f3f46] bg-[#18181b]">
+            <a className="border-r border-[#3f3f46] bg-[#1f1f23] px-4 py-3 font-mono text-xs text-white" href="#overview">
+              overview.md
+            </a>
+            {projects.map((project, index) => (
+              <a
+                key={project.name}
+                className="border-r border-[#3f3f46] px-4 py-3 font-mono text-xs text-zinc-400 hover:bg-[#27272a] hover:text-white"
+                href={`#${project.slug}`}
+              >
+                {index + 1}-{project.name}.md
+              </a>
+            ))}
           </div>
 
-          {projects.map((project, index) => (
-            <details
-              key={project.name}
-              id={project.name.toLowerCase()}
-              className="project-dossier group rounded-lg border border-black bg-white shadow-[8px_8px_0_#111]"
-              open
-            >
-              <summary className="grid cursor-pointer gap-4 p-5 sm:grid-cols-[5rem_1fr_auto] sm:items-center">
-                <span className="flex h-16 w-16 items-center justify-center rounded-md border border-black bg-[#ff3b30] font-mono text-2xl font-black text-white shadow-[4px_4px_0_#111]">
-                  {(index + 1).toString().padStart(2, '0')}
-                </span>
-                <div>
-                  <p className="font-mono text-xs font-bold uppercase text-[#0057ff]">{project.tag}</p>
-                  <h2 className="mt-1 text-3xl font-black text-black md:text-5xl">{project.name}</h2>
-                  <p className="mt-2 text-sm text-[#5c5043]">{project.signal}</p>
-                </div>
-                <span className="w-fit rounded-full border border-black bg-[#f4ff00] px-3 py-1 font-mono text-sm text-black">
-                  {project.date}
-                </span>
-              </summary>
+          <div className="project-notes grid gap-4 p-4">
+            <article id="overview" className="rounded-md border border-[#3f3f46] bg-[#24242a] p-5">
+              <p className="font-mono text-xs text-[#a78bfa]"># proof archive</p>
+              <h1 className="mt-3 text-4xl font-black text-white md:text-6xl">Projects as a thinking vault.</h1>
+              <p className="mt-5 max-w-3xl text-lg leading-8 text-zinc-300">
+                Each project opens like a note: context, stack, proof, and the links between the systems I keep
+                building. Less brochure, more workspace.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2 font-mono text-sm">
+                <span className="rounded bg-[#312e81] px-3 py-1 text-[#ddd6fe]">[[product systems]]</span>
+                <span className="rounded bg-[#312e81] px-3 py-1 text-[#ddd6fe]">[[data interfaces]]</span>
+                <span className="rounded bg-[#312e81] px-3 py-1 text-[#ddd6fe]">[[campus tools]]</span>
+              </div>
+            </article>
 
-              <div className="grid gap-4 border-t border-black p-5 lg:grid-cols-[1.2fr_0.8fr]">
-                <div className="rounded-md border border-black bg-[#fffaf0] p-5">
-                  <p className="font-mono text-xs uppercase text-[#0057ff]">what opens</p>
-                  <p className="mt-3 text-xl leading-8 text-black">{project.summary}</p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {project.stack.split(', ').map((tool) => (
-                      <span key={tool} className="rounded-full border border-black bg-white px-3 py-1 font-mono text-sm">
-                        {tool}
-                      </span>
-                    ))}
+            <div className="grid gap-4">
+              {projects.map((project) => (
+                <article
+                  key={project.name}
+                  id={project.slug}
+                  className="rounded-md border border-[#3f3f46] bg-[#24242a] p-5"
+                >
+                  <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#3f3f46] pb-4">
+                    <div>
+                      <p className="font-mono text-xs uppercase text-[#a78bfa]">## {project.tag}</p>
+                      <h2 className="mt-2 text-3xl font-black text-white md:text-5xl">{project.name}</h2>
+                    </div>
+                    <span className="rounded bg-[#27272a] px-3 py-1 font-mono text-sm text-zinc-300">
+                      {project.date}
+                    </span>
                   </div>
-                </div>
 
-                <div className="grid gap-4">
-                  <div className="rounded-md border border-black bg-[#0057ff] p-5 text-white">
-                    <p className="font-mono text-xs uppercase text-[#f4ff00]">proves</p>
-                    <p className="mt-3 text-lg font-semibold leading-7">{project.proof}</p>
+                  <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_220px]">
+                    <div>
+                      <p className="text-lg leading-8 text-zinc-300">{project.summary}</p>
+                      <div className="mt-5 rounded-md border border-[#3f3f46] bg-[#1b1b20] p-4">
+                        <p className="font-mono text-xs uppercase text-zinc-500">proof</p>
+                        <p className="mt-2 leading-7 text-zinc-200">{project.proof}</p>
+                      </div>
+                    </div>
+
+                    <aside className="rounded-md border border-[#3f3f46] bg-[#1b1b20] p-4">
+                      <p className="font-mono text-xs uppercase text-zinc-500">properties</p>
+                      <dl className="mt-3 grid gap-3 text-sm">
+                        <div>
+                          <dt className="font-mono text-zinc-500">signal</dt>
+                          <dd className="mt-1 text-zinc-200">{project.signal}</dd>
+                        </div>
+                        <div>
+                          <dt className="font-mono text-zinc-500">stack</dt>
+                          <dd className="mt-2 flex flex-wrap gap-2">
+                            {project.stack.split(', ').map((tool) => (
+                              <span key={tool} className="rounded bg-[#27272a] px-2 py-1 text-xs text-zinc-200">
+                                {tool}
+                              </span>
+                            ))}
+                          </dd>
+                        </div>
+                      </dl>
+                    </aside>
                   </div>
-                  <div className="flex flex-wrap gap-3">
+
+                  <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-[#3f3f46] pt-4">
+                    <span className="font-mono text-xs uppercase text-zinc-500">outgoing links</span>
                     {project.links.map((link) => (
                       <a
                         key={link.label}
-                        className="rounded-md border border-black bg-white px-4 py-3 font-mono text-sm text-black shadow-[4px_4px_0_#111] transition-transform hover:-translate-y-0.5 hover:bg-[#f4ff00]"
+                        className="rounded-md border border-[#52525b] bg-[#18181b] px-3 py-2 font-mono text-sm text-[#a78bfa] hover:border-[#a78bfa] hover:text-white"
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -168,11 +205,50 @@ export default function ProjectsPage() {
                       </a>
                     ))}
                   </div>
-                </div>
-              </div>
-            </details>
-          ))}
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
+
+        <aside className="grid gap-4 lg:sticky lg:top-24 lg:self-start">
+          <div className="rounded-md border border-[#3f3f46] bg-[#202024] p-4">
+            <p className="font-mono text-xs uppercase text-zinc-500">graph view</p>
+            <div className="project-graph mt-4">
+              <span className="graph-node graph-core">proof</span>
+              {projects.map((project, index) => (
+                <a
+                  key={project.name}
+                  className={`graph-node graph-node-${index + 1}`}
+                  href={`#${project.slug}`}
+                  aria-label={project.name}
+                />
+              ))}
+              <span className="graph-line graph-line-1" />
+              <span className="graph-line graph-line-2" />
+              <span className="graph-line graph-line-3" />
+              <span className="graph-line graph-line-4" />
+            </div>
+          </div>
+
+          <div className="rounded-md border border-[#3f3f46] bg-[#202024] p-4">
+            <p className="font-mono text-xs uppercase text-zinc-500">backlinks</p>
+            <div className="mt-3 grid gap-2 text-sm text-zinc-300">
+              <a className="rounded bg-[#27272a] px-3 py-2 hover:text-white" href="#dragonsconnect">
+                [[campus community]]
+              </a>
+              <a className="rounded bg-[#27272a] px-3 py-2 hover:text-white" href="#dragonrec">
+                [[operations tooling]]
+              </a>
+              <a className="rounded bg-[#27272a] px-3 py-2 hover:text-white" href="#memoir">
+                [[AI product design]]
+              </a>
+              <a className="rounded bg-[#27272a] px-3 py-2 hover:text-white" href="#hustler">
+                [[data visualization]]
+              </a>
+            </div>
+          </div>
+        </aside>
       </section>
     </main>
   );
