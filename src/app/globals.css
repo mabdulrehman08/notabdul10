@@ -203,3 +203,17 @@ body {
     animation: none;
   }
 }
+
+.project-dossier summary {
+  list-style: none;
+}
+
+.project-dossier summary::-webkit-details-marker {
+  display: none;
+}
+
+.project-dossier[open] summary {
+  background:
+    linear-gradient(90deg, rgba(244, 255, 0, 0.28), transparent 40%),
+    #ffffff;
+}
