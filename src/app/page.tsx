@@ -32,18 +32,6 @@ const photoTiles = [
   { src: '/cracked-pics/pic-6.jpg', label: '06' },
 ];
 
-const videoShelves = [
-  { name: 'reels', route: '/videos/reels', vibe: 'short cuts for homepage energy', accent: 'LIVE' },
-  { name: 'process', route: '/videos/process', vibe: 'build logs, demos, behind the scenes', accent: 'BUILD' },
-  { name: 'archive', route: '/videos/archive', vibe: 'older experiments worth keeping', accent: 'VAULT' },
-];
-
-const videoDrops = [
-  '/videos/reels/intro-loop.mp4',
-  '/videos/process/product-walkthrough.mp4',
-  '/videos/archive/first-prototype.mp4',
-];
-
 const contactLinks = [
   {
     label: 'LinkedIn',
@@ -153,14 +141,14 @@ export default function Home() {
             </div>
 
             <div className="grid gap-5 py-6">
-              <div className={`flight-radar rounded-lg border border-[var(--home-border)] bg-[var(--home-surface)] p-4 font-mono text-xs text-[var(--home-text)] shadow-inner transition-colors duration-500 ${darkMode ? 'flight-radar-dark' : ''}`}>
+              <div className={`flight-radar rounded-lg border border-[var(--home-border)] bg-[var(--home-surface)] p-5 font-mono text-sm text-[var(--home-text)] shadow-inner transition-colors duration-500 ${darkMode ? 'flight-radar-dark' : ''}`}>
                 <div className="relative z-10 flex items-center justify-between text-xs text-[var(--home-muted)]">
                   <span>career.routes</span>
                   <span className="rounded-full border border-[var(--home-border)] bg-[var(--home-accent-2)] px-2 py-1 text-black">LIVE FROM SF</span>
                 </div>
                 <div className="relative z-10 mt-5 border-y border-[var(--home-border)] py-4">
                   <p className="text-xs uppercase text-[var(--home-accent)]">current city</p>
-                  <p className="mt-1 text-3xl font-black leading-none text-[var(--home-text)] sm:text-4xl md:text-5xl">
+                  <p className="mt-1 text-4xl font-black leading-none text-[var(--home-text)] sm:text-5xl md:text-6xl">
                     SAN FRANCISCO
                   </p>
                   <p className="mt-2 text-xs uppercase text-[var(--home-muted)]">
@@ -176,7 +164,7 @@ export default function Home() {
                       <div className="flex items-center justify-between gap-3">
                         <div>
                           <p className="text-xs uppercase text-[var(--home-accent)]">{flight.title}</p>
-                          <p className="mt-2 text-2xl font-black tracking-normal text-[var(--home-text)]">
+                          <p className="mt-2 text-3xl font-black tracking-normal text-[var(--home-text)]">
                             {flight.from} -&gt; {flight.to}
                           </p>
                         </div>
@@ -246,56 +234,6 @@ export default function Home() {
               {item}
             </span>
           ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-5 pb-16">
-        <div className="grid gap-5 border-t border-[var(--home-border)] pt-10 lg:grid-cols-[0.62fr_1.38fr]">
-          <div>
-            <p className="font-mono text-sm text-[var(--home-danger)]">video vault</p>
-            <h2 className="mt-2 max-w-md text-3xl font-black text-[var(--home-text)]">
-              Your clips need a stage, not a random folder.
-            </h2>
-            <p className="mt-4 max-w-lg text-base leading-7 text-[var(--home-subtle)]">
-              I carved out a little media system so you can sort polished reels, process footage, and older archive
-              cuts without the project feeling messy.
-            </p>
-          </div>
-
-          <div className={`video-vault rounded-[24px] border border-[var(--home-border)] bg-[var(--home-surface)] p-4 transition-colors duration-500 ${darkMode ? 'video-vault-dark' : ''}`}>
-            <div className="video-vault-head">
-              <div>
-                <p className="video-vault-kicker">media.map</p>
-                <h3 className="video-vault-title">public/videos</h3>
-              </div>
-              <span className="video-vault-badge">ready for upload</span>
-            </div>
-
-            <div className="video-vault-grid">
-              {videoShelves.map((shelf) => (
-                <div key={shelf.name} className="video-shelf-card">
-                  <div className="video-shelf-top">
-                    <span className="video-shelf-accent">{shelf.accent}</span>
-                    <span className="video-shelf-route">{shelf.route}</span>
-                  </div>
-                  <p className="video-shelf-name">{shelf.name}</p>
-                  <p className="video-shelf-vibe">{shelf.vibe}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="video-dropzone">
-              <div className="video-dropzone-copy">
-                <p className="video-dropzone-label">drop pattern</p>
-                <p className="video-dropzone-title">Put your files in `public/videos` and they go live instantly.</p>
-              </div>
-              <div className="video-path-list">
-                {videoDrops.map((path) => (
-                  <code key={path}>{path}</code>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 

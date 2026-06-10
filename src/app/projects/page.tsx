@@ -154,6 +154,27 @@ const links = [
   { key: 'J', label: 'Journals', href: '/journals' },
 ];
 
+const projectVideos = [
+  {
+    title: 'intro.mp4',
+    src: '/videos/intro.mp4',
+    note: 'Current live clip stored in the project video library.',
+    shelf: 'reels',
+  },
+  {
+    title: 'reels/',
+    src: null,
+    note: 'Use this for polished clips you want attached to a project story.',
+    shelf: '/videos/reels',
+  },
+  {
+    title: 'process/',
+    src: null,
+    note: 'Use this for demos, walkthroughs, and behind-the-scenes build footage.',
+    shelf: '/videos/process',
+  },
+];
+
 const projectCount = projects.length;
 
 export default function ProjectsPage() {
@@ -242,6 +263,63 @@ export default function ProjectsPage() {
                 <span className="rounded border border-[#2a2a2a] bg-black px-3 py-1 text-zinc-200">[[10 public repos]]</span>
                 <span className="rounded border border-[#2a2a2a] bg-black px-3 py-1 text-zinc-200">[[journal format]]</span>
                 <span className="rounded border border-[#2a2a2a] bg-black px-3 py-1 text-zinc-200">[[community grading]]</span>
+              </div>
+            </article>
+
+            <article className="rounded-md border border-[#242424] bg-[#090909] p-4">
+              <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#242424] pb-3">
+                <div>
+                  <p className="font-mono text-xs uppercase text-zinc-500">project videos</p>
+                  <h2 className="mt-2 text-xl font-black text-white md:text-2xl">Clips belong in the work archive.</h2>
+                </div>
+                <span className="rounded border border-[#2a2a2a] bg-black px-3 py-1 font-mono text-xs text-zinc-300">
+                  /public/videos
+                </span>
+              </div>
+
+              <div className="mt-4 grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
+                <div className="overflow-hidden rounded-md border border-[#242424] bg-black">
+                  <video
+                    className="aspect-video w-full bg-black object-cover"
+                    controls
+                    muted
+                    playsInline
+                    preload="metadata"
+                  >
+                    <source src="/videos/intro.mp4" type="video/mp4" />
+                  </video>
+                  <div className="border-t border-[#242424] px-3 py-3">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500">active clip</p>
+                    <p className="mt-2 text-sm leading-6 text-zinc-300">
+                      The current video asset is wired into the projects page so your footage sits with the project
+                      archive instead of floating on the homepage.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid gap-3">
+                  {projectVideos.map((item) => (
+                    <div key={item.title} className="rounded-md border border-[#242424] bg-black p-3">
+                      <div className="flex items-center justify-between gap-3">
+                        <p className="font-mono text-xs text-white">{item.title}</p>
+                        <span className="rounded border border-[#2a2a2a] bg-[#111111] px-2 py-1 font-mono text-[10px] uppercase text-zinc-400">
+                          {item.shelf}
+                        </span>
+                      </div>
+                      <p className="mt-2 text-xs leading-5 text-zinc-400">{item.note}</p>
+                      {item.src ? (
+                        <a
+                          className="mt-3 inline-flex rounded-md border border-[#333333] bg-[#111111] px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-300 hover:border-white hover:text-white"
+                          href={item.src}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          open clip
+                        </a>
+                      ) : null}
+                    </div>
+                  ))}
+                </div>
               </div>
             </article>
 
