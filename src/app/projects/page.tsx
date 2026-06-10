@@ -1,10 +1,6 @@
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
+import ProjectGraphPanel from './ProjectGraphPanel';
 import ProjectRanker from './ProjectRanker';
-
-const ProjectConstellation = dynamic(() => import('./ProjectConstellation'), {
-  ssr: false,
-});
 
 const projects = [
   {
@@ -331,7 +327,7 @@ export default function ProjectsPage() {
         </div>
 
         <aside className="grid gap-4 lg:sticky lg:top-24 lg:self-start">
-          <ProjectConstellation
+          <ProjectGraphPanel
             projects={projects.map(({ name, slug, year, tag }) => ({
               name,
               slug,
