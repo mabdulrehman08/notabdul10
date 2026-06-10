@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Muhammad Abdulrehman | Portfolio',
-  description: 'Interactive resume and project portfolio for Muhammad Abdulrehman.',
+  title: 'not_abdul.com',
+  description: '',
   icons: {
     icon: '/logo.jpg',
   },

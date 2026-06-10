@@ -39,10 +39,10 @@ export default function JournalsPage() {
             {links.map((item) => (
               <Link
                 key={item.label}
-                className="group flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-gray-500 transition-colors hover:bg-gray-100 hover:text-black"
+                className="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-lg font-semibold text-gray-500 transition-colors hover:bg-gray-100 hover:text-black"
                 href={item.href}
               >
-                <span className="hidden h-5 min-w-5 items-center justify-center rounded border border-gray-200 bg-white px-1 font-mono text-[12px] text-gray-400 shadow-sm group-hover:text-gray-700 sm:flex">
+                <span className="hidden min-h-8 min-w-8 items-center justify-center rounded-md border border-gray-200 bg-white px-2 font-mono text-base font-black text-gray-400 shadow-sm group-hover:text-gray-700 sm:flex">
                   {item.key}
                 </span>
                 {item.label}

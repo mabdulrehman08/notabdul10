@@ -17,33 +17,31 @@ type RankEntry = {
 const storageKey = "notabdul-project-rankings";
 
 export default function ProjectRanker({ projects }: { projects: ProjectOption[] }) {
-  const [entries, setEntries] = useState<RankEntry[]>([]);
-  const [ready, setReady] = useState(false);
+  const [entries, setEntries] = useState<RankEntry[]>(() => {
+    if (typeof window === "undefined") {
+      return [];
+    }
+
+    const stored = window.localStorage.getItem(storageKey);
+
+    if (!stored) {
+      return [];
+    }
+
+    try {
+      return JSON.parse(stored) as RankEntry[];
+    } catch {
+      window.localStorage.removeItem(storageKey);
+      return [];
+    }
+  });
   const [name, setName] = useState("");
   const [project, setProject] = useState(projects[0]?.name ?? "");
   const [score, setScore] = useState(9);
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(storageKey);
-
-    if (stored) {
-      try {
-        setEntries(JSON.parse(stored) as RankEntry[]);
-      } catch {
-        window.localStorage.removeItem(storageKey);
-      }
-    }
-
-    setReady(true);
-  }, []);
-
-  useEffect(() => {
-    if (!ready) {
-      return;
-    }
-
     window.localStorage.setItem(storageKey, JSON.stringify(entries));
-  }, [entries, ready]);
+  }, [entries]);
 
   const leaderboard = useMemo(
     () =>
