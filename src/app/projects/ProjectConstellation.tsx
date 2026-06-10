@@ -105,7 +105,7 @@ export default function ProjectConstellation({ projects }: { projects: ProjectNo
         </span>
       </div>
       <div className="h-[250px] sm:h-[280px]">
-        <Canvas camera={{ position: [0, 0, 9], fov: 52 }}>
+        <Canvas camera={{ position: [0, 0, 7.2], fov: 44 }}>
           <color attach="background" args={['#050505']} />
           <fog attach="fog" args={['#050505', 8, 16]} />
           <ambientLight intensity={0.75} />
@@ -114,7 +114,7 @@ export default function ProjectConstellation({ projects }: { projects: ProjectNo
           <pointLight position={[4, 3, 2]} intensity={9} color="#fb7185" />
           <Stars radius={24} depth={10} count={800} factor={3} saturation={0} fade speed={1} />
           <ConstellationScene projects={projects} />
-          <OrbitControls enablePan={false} maxDistance={10} minDistance={6.5} autoRotate autoRotateSpeed={0.45} />
+          <OrbitControls enablePan={false} maxDistance={8.1} minDistance={5.4} autoRotate autoRotateSpeed={0.4} />
         </Canvas>
       </div>
     </div>
