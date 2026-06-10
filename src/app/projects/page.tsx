@@ -181,7 +181,7 @@ export default function ProjectsPage() {
         </div>
       </nav>
 
-      <section className="mx-auto grid max-w-7xl gap-4 px-5 pb-10 pt-24 lg:grid-cols-[240px_1fr_250px]">
+      <section className="mx-auto grid max-w-7xl gap-3 px-5 pb-8 pt-22 lg:grid-cols-[220px_1fr_230px]">
         <aside className="rounded-md border border-[#242424] bg-[#070707]">
           <div className="flex items-center justify-between border-b border-[#242424] px-4 py-3">
             <p className="font-mono text-xs uppercase text-zinc-400">repo index</p>
@@ -192,16 +192,16 @@ export default function ProjectsPage() {
               /mabdulrehman08/journal
             </div>
             <div className="mt-3 grid gap-1">
-              <a className="rounded px-2 py-2 text-sm text-zinc-300 hover:bg-[#111111]" href="#overview">
+              <a className="rounded px-2 py-2 text-xs text-zinc-300 hover:bg-[#111111]" href="#overview">
                 00-overview.md
               </a>
-              <a className="rounded px-2 py-2 text-sm text-zinc-300 hover:bg-[#111111]" href="#rankings">
+              <a className="rounded px-2 py-2 text-xs text-zinc-300 hover:bg-[#111111]" href="#rankings">
                 rankings.db
               </a>
               {projects.map((project, index) => (
                 <a
                   key={project.name}
-                  className="rounded px-2 py-2 text-sm text-zinc-300 hover:bg-[#111111]"
+                  className="rounded px-2 py-2 text-xs text-zinc-300 hover:bg-[#111111]"
                   href={`#${project.slug}`}
                 >
                   {(index + 1).toString().padStart(2, '0')}-{project.name}.md
@@ -231,14 +231,14 @@ export default function ProjectsPage() {
           </div>
 
           <div className="grid gap-4 p-4">
-            <article id="overview" className="rounded-md border border-[#242424] bg-[#090909] p-5">
+            <article id="overview" className="rounded-md border border-[#242424] bg-[#090909] p-4">
               <p className="font-mono text-xs text-zinc-500"># repo journal</p>
-              <h1 className="mt-3 text-3xl font-black text-white md:text-5xl">A dated trail of what I built and shipped.</h1>
-              <p className="mt-4 max-w-3xl text-base leading-7 text-zinc-300">
+              <h1 className="mt-3 max-w-3xl text-2xl font-black leading-tight text-white md:text-4xl">A dated trail of what I built and shipped.</h1>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-zinc-300">
                 This page now mirrors the public GitHub work as a journal instead of a clean portfolio grid. Each entry
                 reads like a note: when the repo mattered, what got built, and why it deserves a place in the archive.
               </p>
-              <div className="mt-5 flex flex-wrap gap-2 font-mono text-sm">
+              <div className="mt-4 flex flex-wrap gap-2 font-mono text-xs">
                 <span className="rounded border border-[#2a2a2a] bg-black px-3 py-1 text-zinc-200">[[10 public repos]]</span>
                 <span className="rounded border border-[#2a2a2a] bg-black px-3 py-1 text-zinc-200">[[journal format]]</span>
                 <span className="rounded border border-[#2a2a2a] bg-black px-3 py-1 text-zinc-200">[[community grading]]</span>
@@ -250,16 +250,16 @@ export default function ProjectsPage() {
                 <article
                   key={project.name}
                   id={project.slug}
-                  className="rounded-md border border-[#242424] bg-[#090909] p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
+                  className="rounded-md border border-[#242424] bg-[#090909] p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
                 >
-                  <div className="grid gap-5 lg:grid-cols-[180px_1fr]">
-                    <div className="border-l-2 border-[#f4ff00] pl-4">
-                      <p className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+                  <div className="grid gap-4 lg:grid-cols-[150px_1fr]">
+                    <div className="border-l-2 border-[#f4ff00] pl-3">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
                         entry {(index + 1).toString().padStart(2, '0')}
                       </p>
-                      <p className="mt-3 text-lg font-black text-white">{project.entryDate}</p>
-                      <p className="mt-2 font-mono text-xs uppercase text-[#7dd3fc]">{project.tag}</p>
-                      <p className="mt-4 rounded border border-[#2a2a2a] bg-black px-3 py-2 font-mono text-xs text-zinc-400">
+                      <p className="mt-2 text-sm font-black text-white">{project.entryDate}</p>
+                      <p className="mt-2 font-mono text-[10px] uppercase text-[#7dd3fc]">{project.tag}</p>
+                      <p className="mt-3 rounded border border-[#2a2a2a] bg-black px-3 py-2 font-mono text-[10px] text-zinc-400">
                         {project.location}
                       </p>
                     </div>
@@ -267,26 +267,26 @@ export default function ProjectsPage() {
                     <div>
                       <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#242424] pb-3">
                         <div>
-                          <p className="font-mono text-xs uppercase text-zinc-500">{project.name}.md</p>
-                          <h2 className="mt-2 text-2xl font-black leading-tight text-white md:text-3xl">
+                          <p className="font-mono text-[10px] uppercase text-zinc-500">{project.name}.md</p>
+                          <h2 className="mt-2 max-w-3xl text-xl font-black leading-snug text-white md:text-2xl">
                             {project.headline}
                           </h2>
                         </div>
-                        <span className="rounded border border-[#2a2a2a] bg-black px-3 py-1 font-mono text-sm text-zinc-300">
+                        <span className="rounded border border-[#2a2a2a] bg-black px-3 py-1 font-mono text-xs text-zinc-300">
                           {project.year}
                         </span>
                       </div>
 
-                      <div className="mt-4 grid gap-4 xl:grid-cols-[1.15fr_0.85fr]">
-                        <div className="space-y-4">
-                          <p className="text-base leading-7 text-zinc-300">{project.summary}</p>
-                          <div className="rounded-md border border-[#242424] bg-black p-4">
+                      <div className="mt-3 grid gap-3 xl:grid-cols-[1.15fr_0.85fr]">
+                        <div className="space-y-3">
+                          <p className="text-sm leading-6 text-zinc-300">{project.summary}</p>
+                          <div className="rounded-md border border-[#242424] bg-black p-3">
                             <p className="font-mono text-xs uppercase text-zinc-500">journal note</p>
-                            <p className="mt-2 leading-7 text-zinc-200">{project.note}</p>
+                            <p className="mt-2 text-sm leading-6 text-zinc-200">{project.note}</p>
                           </div>
                         </div>
 
-                        <aside className="rounded-md border border-[#242424] bg-black p-4">
+                        <aside className="rounded-md border border-[#242424] bg-black p-3">
                           <p className="font-mono text-xs uppercase text-zinc-500">build signal</p>
                           <p className="mt-3 text-sm leading-6 text-zinc-200">{project.build}</p>
                           <div className="mt-4 flex flex-wrap gap-2">
@@ -302,12 +302,12 @@ export default function ProjectsPage() {
                         </aside>
                       </div>
 
-                      <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-[#242424] pt-3">
+                      <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-[#242424] pt-3">
                         <span className="font-mono text-xs uppercase text-zinc-500">links</span>
                         {project.links.map((link) => (
                           <a
                             key={link.label}
-                            className="rounded-md border border-[#333333] bg-black px-3 py-2 font-mono text-sm text-zinc-300 hover:border-white hover:text-white"
+                            className="rounded-md border border-[#333333] bg-black px-3 py-2 font-mono text-xs text-zinc-300 hover:border-white hover:text-white"
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -336,30 +336,30 @@ export default function ProjectsPage() {
             }))}
           />
 
-          <div className="rounded-md border border-[#242424] bg-[#070707] p-4">
+          <div className="rounded-md border border-[#242424] bg-[#070707] p-3.5">
             <p className="font-mono text-xs uppercase text-zinc-500">journal stats</p>
-            <div className="mt-3 grid gap-3">
+            <div className="mt-3 grid gap-2.5">
               <div className="rounded border border-[#242424] bg-black p-3">
                 <p className="font-mono text-xs text-zinc-500">public repos mirrored</p>
-                <p className="mt-1 text-3xl font-black text-white">{projectCount}</p>
+                <p className="mt-1 text-2xl font-black text-white">{projectCount}</p>
               </div>
               <div className="rounded border border-[#242424] bg-black p-3">
                 <p className="font-mono text-xs text-zinc-500">latest entry</p>
-                <p className="mt-1 text-lg font-black text-white">weavers</p>
+                <p className="mt-1 text-base font-black text-white">weavers</p>
                 <p className="mt-1 text-xs uppercase text-[#7dd3fc]">June 9, 2026</p>
               </div>
               <div className="rounded border border-[#242424] bg-black p-3">
                 <p className="font-mono text-xs text-zinc-500">page mode</p>
-                <p className="mt-1 text-sm leading-6 text-zinc-300">
+                <p className="mt-1 text-xs leading-5 text-zinc-300">
                   Journal-first storytelling with links out to the original repos and a grading panel underneath.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="rounded-md border border-[#242424] bg-[#070707] p-4">
+          <div className="rounded-md border border-[#242424] bg-[#070707] p-3.5">
             <p className="font-mono text-xs uppercase text-zinc-500">jump links</p>
-            <div className="mt-3 grid gap-2 text-sm text-zinc-300">
+            <div className="mt-3 grid gap-2 text-xs text-zinc-300">
               <a className="rounded border border-[#242424] bg-black px-3 py-2 hover:text-white" href="#weavers">
                 [[weavers]]
               </a>

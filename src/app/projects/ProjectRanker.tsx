@@ -85,11 +85,11 @@ export default function ProjectRanker({ projects }: { projects: ProjectOption[] 
   }
 
   return (
-    <section id="rankings" className="rounded-md border border-[#2a2a2a] bg-[#090909] p-5">
+    <section id="rankings" className="rounded-md border border-[#2a2a2a] bg-[#090909] p-4">
       <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#2a2a2a] pb-4">
         <div>
           <p className="font-mono text-xs uppercase text-zinc-500">community.rankings</p>
-          <h2 className="mt-2 text-3xl font-black text-white">Rank the projects.</h2>
+          <h2 className="mt-2 text-2xl font-black text-white md:text-[1.75rem]">Rank the projects.</h2>
         </div>
         <span className="rounded border border-[#3a3a3a] bg-black px-3 py-1 font-mono text-xs text-zinc-300">
           {entries.length} votes
@@ -97,11 +97,11 @@ export default function ProjectRanker({ projects }: { projects: ProjectOption[] 
       </div>
 
       <div className="mt-5 grid gap-5 xl:grid-cols-[0.95fr_1.05fr]">
-        <form className="grid gap-3 rounded-md border border-[#2a2a2a] bg-black p-4" onSubmit={handleSubmit}>
-          <label className="grid gap-2 text-sm text-zinc-300">
+        <form className="grid gap-3 rounded-md border border-[#2a2a2a] bg-black p-3.5" onSubmit={handleSubmit}>
+          <label className="grid gap-2 text-xs text-zinc-300">
             <span className="font-mono text-xs uppercase text-zinc-500">name</span>
             <input
-              className="rounded-md border border-[#3a3a3a] bg-[#0f0f0f] px-3 py-3 text-white outline-none focus:border-white"
+              className="rounded-md border border-[#3a3a3a] bg-[#0f0f0f] px-3 py-2.5 text-sm text-white outline-none focus:border-white"
               value={name}
               onChange={(event) => setName(event.target.value)}
               placeholder="your name"
@@ -109,10 +109,10 @@ export default function ProjectRanker({ projects }: { projects: ProjectOption[] 
             />
           </label>
 
-          <label className="grid gap-2 text-sm text-zinc-300">
+          <label className="grid gap-2 text-xs text-zinc-300">
             <span className="font-mono text-xs uppercase text-zinc-500">project</span>
             <select
-              className="rounded-md border border-[#3a3a3a] bg-[#0f0f0f] px-3 py-3 text-white outline-none focus:border-white"
+              className="rounded-md border border-[#3a3a3a] bg-[#0f0f0f] px-3 py-2.5 text-sm text-white outline-none focus:border-white"
               value={project}
               onChange={(event) => setProject(event.target.value)}
             >
@@ -124,7 +124,7 @@ export default function ProjectRanker({ projects }: { projects: ProjectOption[] 
             </select>
           </label>
 
-          <label className="grid gap-2 text-sm text-zinc-300">
+          <label className="grid gap-2 text-xs text-zinc-300">
             <span className="flex items-center justify-between font-mono text-xs uppercase text-zinc-500">
               score <b className="text-white">{score}/10</b>
             </span>
@@ -139,7 +139,7 @@ export default function ProjectRanker({ projects }: { projects: ProjectOption[] 
           </label>
 
           <button
-            className="rounded-md border border-white bg-white px-4 py-3 font-mono text-sm font-bold text-black transition-colors hover:bg-black hover:text-white"
+            className="rounded-md border border-white bg-white px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-[0.15em] text-black transition-colors hover:bg-black hover:text-white"
             type="submit"
           >
             add ranking
@@ -150,17 +150,17 @@ export default function ProjectRanker({ projects }: { projects: ProjectOption[] 
           {leaderboard.map((item, index) => (
             <a
               key={item.slug}
-              className="grid gap-3 rounded-md border border-[#2a2a2a] bg-black p-4 hover:border-white sm:grid-cols-[2.25rem_1fr_auto]"
+              className="grid gap-2 rounded-md border border-[#2a2a2a] bg-black p-3 hover:border-white sm:grid-cols-[2rem_1fr_auto]"
               href={`#${item.slug}`}
             >
-              <span className="font-mono text-lg font-black text-zinc-500">
+              <span className="font-mono text-sm font-black text-zinc-500">
                 {(index + 1).toString().padStart(2, "0")}
               </span>
               <span>
-                <b className="block text-white">{item.name}</b>
+                <b className="block text-sm text-white">{item.name}</b>
                 <small className="mt-1 block font-mono text-xs text-zinc-500">{item.votes} votes</small>
               </span>
-              <span className="font-mono text-xl font-black text-white">
+              <span className="font-mono text-lg font-black text-white">
                 {item.votes ? item.average.toFixed(1) : "-"}
               </span>
             </a>
@@ -172,7 +172,7 @@ export default function ProjectRanker({ projects }: { projects: ProjectOption[] 
         {entries.slice(0, 5).map((entry) => (
           <div
             key={entry.id}
-            className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-[#2a2a2a] bg-black px-3 py-2 text-sm"
+            className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-[#2a2a2a] bg-black px-3 py-2 text-xs"
           >
             <span className="text-zinc-300">
               <b className="text-white">{entry.name}</b> ranked {entry.project}
