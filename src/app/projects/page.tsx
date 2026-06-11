@@ -165,7 +165,7 @@ const links = [
 
 const projectVideos: ProjectVideo[] = [
   {
-    title: 'intro.mp4',
+    title: 'Original orchestration reel',
     src: '/videos/intro.mp4',
     note: 'Original intro clip kept in the archive as the first orchestration pass.',
     shelf: 'archive',
@@ -173,7 +173,7 @@ const projectVideos: ProjectVideo[] = [
     summary: 'The first version stays visible so the project story shows progression instead of only the latest asset.',
   },
   {
-    title: 'intro2.mp4',
+    title: 'Current orchestration reel',
     src: '/videos/intro2.mp4',
     note: 'Primary orchestration clip now featured in the project archive.',
     shelf: 'featured',
