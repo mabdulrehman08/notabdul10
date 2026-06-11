@@ -2,6 +2,15 @@ import Link from 'next/link';
 import ProjectGraphPanel from './ProjectGraphPanel';
 import ProjectRanker from './ProjectRanker';
 
+type ProjectVideo = {
+  title: string;
+  src: string | null;
+  note: string;
+  shelf: string;
+  badge?: string;
+  summary?: string;
+};
+
 const projects = [
   {
     name: 'weavers',
@@ -154,12 +163,22 @@ const links = [
   { key: 'J', label: 'Journals', href: '/journals' },
 ];
 
-const projectVideos = [
+const projectVideos: ProjectVideo[] = [
   {
     title: 'intro.mp4',
     src: '/videos/intro.mp4',
-    note: 'Current live clip stored in the project video library.',
-    shelf: 'reels',
+    note: 'Original intro clip kept in the archive as the first orchestration pass.',
+    shelf: 'archive',
+    badge: 'original cut',
+    summary: 'The first version stays visible so the project story shows progression instead of only the latest asset.',
+  },
+  {
+    title: 'intro2.mp4',
+    src: '/videos/intro2.mp4',
+    note: 'Primary orchestration clip now featured in the project archive.',
+    shelf: 'featured',
+    badge: 'current feature',
+    summary: 'The newer version leads the section with a sharper visual treatment and a stronger first impression.',
   },
   {
     title: 'reels/',
@@ -278,23 +297,76 @@ export default function ProjectsPage() {
               </div>
 
               <div className="mt-4 grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
-                <div className="overflow-hidden rounded-md border border-[#242424] bg-black">
-                  <video
-                    className="aspect-video w-full bg-black object-cover"
-                    controls
-                    muted
-                    playsInline
-                    preload="metadata"
-                  >
-                    <source src="/videos/intro.mp4" type="video/mp4" />
-                  </video>
-                  <div className="border-t border-[#242424] px-3 py-3">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500">active clip</p>
-                    <p className="mt-2 text-sm leading-6 text-zinc-300">
-                      The current video asset is wired into the projects page so your footage sits with the project
-                      archive instead of floating on the homepage.
-                    </p>
-                  </div>
+                <div className="grid gap-4">
+                  {projectVideos
+                    .filter((item): item is ProjectVideo & { src: string } => item.src !== null)
+                    .map((item, index) => (
+                      <div key={item.title} className="overflow-hidden rounded-md border border-[#242424] bg-black">
+                        <div
+                          className={`border-b border-[#242424] px-4 py-4 ${
+                            index === 1
+                              ? 'bg-[radial-gradient(circle_at_top_left,_rgba(125,211,252,0.18),_transparent_36%),linear-gradient(180deg,_rgba(14,14,14,0.96),_rgba(0,0,0,1))]'
+                              : 'bg-[radial-gradient(circle_at_top_left,_rgba(244,255,0,0.1),_transparent_30%),linear-gradient(180deg,_rgba(18,18,18,0.96),_rgba(0,0,0,1))]'
+                          }`}
+                        >
+                          <div className="flex flex-wrap items-center justify-between gap-3">
+                            <div>
+                              <p
+                                className={`font-mono text-[10px] uppercase tracking-[0.18em] ${
+                                  index === 1 ? 'text-sky-300' : 'text-[#f4ff88]'
+                                }`}
+                              >
+                                {index === 1 ? 'featured orchestration reel' : 'archive orchestration reel'}
+                              </p>
+                              <h3 className="mt-2 text-lg font-black text-white md:text-xl">{item.title}</h3>
+                            </div>
+                            <span
+                              className={`rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] ${
+                                index === 1
+                                  ? 'border border-sky-400/30 bg-sky-400/10 text-sky-200'
+                                  : 'border border-[#f4ff88]/25 bg-[#f4ff88]/8 text-[#f4ff88]'
+                              }`}
+                            >
+                              {item.badge}
+                            </span>
+                          </div>
+                          <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-300">{item.summary}</p>
+                        </div>
+
+                        <div className="bg-[linear-gradient(180deg,_rgba(9,9,11,0.88),_rgba(0,0,0,1))] p-3">
+                          <div className="overflow-hidden rounded-md border border-[#2f2f2f] bg-[#050505] shadow-[0_18px_48px_rgba(0,0,0,0.45)]">
+                            <video
+                              className="aspect-video w-full bg-black object-cover"
+                              controls
+                              muted
+                              playsInline
+                              preload="metadata"
+                            >
+                              <source src={item.src} type="video/mp4" />
+                            </video>
+                          </div>
+                        </div>
+
+                        <div className="grid gap-3 border-t border-[#242424] px-3 py-3 md:grid-cols-3">
+                          <div className="rounded-md border border-[#242424] bg-[#0a0a0a] px-3 py-3">
+                            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500">role</p>
+                            <p className="mt-2 text-sm text-zinc-200">
+                              {index === 1 ? 'Current lead visual for the orchestration story.' : 'Earlier visual pass kept for continuity.'}
+                            </p>
+                          </div>
+                          <div className="rounded-md border border-[#242424] bg-[#0a0a0a] px-3 py-3">
+                            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500">placement</p>
+                            <p className="mt-2 text-sm text-zinc-200">Featured directly inside the projects archive.</p>
+                          </div>
+                          <div className="rounded-md border border-[#242424] bg-[#0a0a0a] px-3 py-3">
+                            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500">status</p>
+                            <p className="mt-2 text-sm text-zinc-200">
+                              {index === 1 ? 'Newest clip highlighted as the active version.' : 'Original clip preserved alongside the update.'}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                 </div>
 
                 <div className="grid gap-3">
