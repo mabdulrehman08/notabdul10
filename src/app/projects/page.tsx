@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import SiteNav from '../components/site-nav';
 import ProjectGraphPanel from './ProjectGraphPanel';
 import ProjectRanker from './ProjectRanker';
 
@@ -157,12 +157,6 @@ const projects = [
   },
 ];
 
-const links = [
-  { key: 'H', label: 'Home', href: '/' },
-  { key: 'P', label: 'Projects', href: '/projects' },
-  { key: 'J', label: 'Journals', href: '/journals' },
-];
-
 const projectVideos: ProjectVideo[] = [
   {
     title: 'Original orchestration reel',
@@ -199,29 +193,9 @@ const projectCount = projects.length;
 export default function ProjectsPage() {
   return (
     <main className="min-h-screen bg-black text-[#f4f4f5]">
-      <nav className="fixed left-0 top-0 z-50 w-full border-b border-[#242424] bg-black/92 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
-          <Link className="font-mono text-base font-black text-white" href="/">
-            MUHAMMAD_ABDULREHMAN
-          </Link>
-          <div className="flex items-center gap-1">
-            {links.map((item) => (
-              <Link
-                key={item.label}
-                className="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-lg font-semibold text-zinc-400 transition-colors hover:bg-[#111111] hover:text-white"
-                href={item.href}
-              >
-                <span className="hidden min-h-8 min-w-8 items-center justify-center rounded-md border border-[#333333] bg-[#111111] px-2 font-mono text-base font-black text-zinc-400 group-hover:text-white sm:flex">
-                  {item.key}
-                </span>
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
 
-      <section className="mx-auto grid max-w-7xl gap-3 px-5 pb-8 pt-22 lg:grid-cols-[220px_1fr_230px]">
+      <section className="mx-auto grid max-w-7xl gap-3 px-5 pb-8 pt-28 lg:grid-cols-[220px_1fr_230px]">
         <aside className="rounded-md border border-[#242424] bg-[#070707]">
           <div className="flex items-center justify-between border-b border-[#242424] px-4 py-3">
             <p className="font-mono text-xs uppercase text-zinc-400">repo index</p>
@@ -252,24 +226,6 @@ export default function ProjectsPage() {
         </aside>
 
         <div className="min-w-0 rounded-md border border-[#242424] bg-[#050505]">
-          <div className="flex overflow-x-auto border-b border-[#242424] bg-black">
-            <a className="border-r border-[#242424] bg-[#050505] px-4 py-3 font-mono text-xs text-white" href="#overview">
-              journal.md
-            </a>
-            <a className="border-r border-[#242424] px-4 py-3 font-mono text-xs text-zinc-400 hover:bg-[#111111] hover:text-white" href="#rankings">
-              gradebook.db
-            </a>
-            {projects.map((project, index) => (
-              <a
-                key={project.name}
-                className="border-r border-[#242424] px-4 py-3 font-mono text-xs text-zinc-400 hover:bg-[#111111] hover:text-white"
-                href={`#${project.slug}`}
-              >
-                {index + 1}-{project.name}.md
-              </a>
-            ))}
-          </div>
-
           <div className="grid gap-4 p-4">
             <article id="overview" className="rounded-md border border-[#242424] bg-[#090909] p-4">
               <p className="font-mono text-xs text-zinc-500"># repo journal</p>
@@ -281,9 +237,86 @@ export default function ProjectsPage() {
               <div className="mt-4 flex flex-wrap gap-2 font-mono text-xs">
                 <span className="rounded border border-[#2a2a2a] bg-black px-3 py-1 text-zinc-200">[[10 public repos]]</span>
                 <span className="rounded border border-[#2a2a2a] bg-black px-3 py-1 text-zinc-200">[[journal format]]</span>
-                <span className="rounded border border-[#2a2a2a] bg-black px-3 py-1 text-zinc-200">[[community grading]]</span>
+                <span className="rounded border border-[#2a2a2a] bg-black px-3 py-1 text-zinc-200">[[local ratings]]</span>
               </div>
             </article>
+
+            <div className="grid gap-4">
+              {projects.map((project, index) => (
+                <article
+                  key={project.name}
+                  id={project.slug}
+                  className="rounded-md border border-[#242424] bg-[#090909] p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
+                >
+                  <div className="grid gap-4 lg:grid-cols-[150px_1fr]">
+                    <div className="border-l-2 border-[#f4ff00] pl-3">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                        entry {(index + 1).toString().padStart(2, '0')}
+                      </p>
+                      <p className="mt-2 text-sm font-black text-white">{project.entryDate}</p>
+                      <p className="mt-2 font-mono text-[10px] uppercase text-[#7dd3fc]">{project.tag}</p>
+                      <p className="mt-3 rounded border border-[#2a2a2a] bg-black px-3 py-2 font-mono text-[10px] text-zinc-400">
+                        {project.location}
+                      </p>
+                    </div>
+
+                    <div>
+                      <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#242424] pb-3">
+                        <div>
+                          <p className="font-mono text-[10px] uppercase text-zinc-500">{project.name}.md</p>
+                          <h2 className="mt-2 max-w-3xl text-xl font-black leading-snug text-white md:text-2xl">
+                            {project.headline}
+                          </h2>
+                        </div>
+                        <span className="rounded border border-[#2a2a2a] bg-black px-3 py-1 font-mono text-xs text-zinc-300">
+                          {project.year}
+                        </span>
+                      </div>
+
+                      <div className="mt-3 grid gap-3 xl:grid-cols-[1.15fr_0.85fr]">
+                        <div className="space-y-3">
+                          <p className="text-sm leading-6 text-zinc-300">{project.summary}</p>
+                          <div className="rounded-md border border-[#242424] bg-black p-3">
+                            <p className="font-mono text-xs uppercase text-zinc-500">journal note</p>
+                            <p className="mt-2 text-sm leading-6 text-zinc-200">{project.note}</p>
+                          </div>
+                        </div>
+
+                        <aside className="rounded-md border border-[#242424] bg-black p-3">
+                          <p className="font-mono text-xs uppercase text-zinc-500">build signal</p>
+                          <p className="mt-3 text-sm leading-6 text-zinc-200">{project.build}</p>
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            {project.build.split(', ').map((item) => (
+                              <span
+                                key={item}
+                                className="rounded border border-[#2a2a2a] bg-[#111111] px-2 py-1 font-mono text-xs text-zinc-300"
+                              >
+                                {item}
+                              </span>
+                            ))}
+                          </div>
+                        </aside>
+                      </div>
+
+                      <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-[#242424] pt-3">
+                        <span className="font-mono text-xs uppercase text-zinc-500">links</span>
+                        {project.links.map((link) => (
+                          <a
+                            key={link.label}
+                            className="rounded-md border border-[#333333] bg-black px-3 py-2 font-mono text-xs text-zinc-300 hover:border-white hover:text-white"
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {link.label} -&gt;
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
 
             <article className="rounded-md border border-[#242424] bg-[#090909] p-4">
               <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#242424] pb-3">
@@ -395,83 +428,6 @@ export default function ProjectsPage() {
               </div>
             </article>
 
-            <div className="grid gap-4">
-              {projects.map((project, index) => (
-                <article
-                  key={project.name}
-                  id={project.slug}
-                  className="rounded-md border border-[#242424] bg-[#090909] p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
-                >
-                  <div className="grid gap-4 lg:grid-cols-[150px_1fr]">
-                    <div className="border-l-2 border-[#f4ff00] pl-3">
-                      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
-                        entry {(index + 1).toString().padStart(2, '0')}
-                      </p>
-                      <p className="mt-2 text-sm font-black text-white">{project.entryDate}</p>
-                      <p className="mt-2 font-mono text-[10px] uppercase text-[#7dd3fc]">{project.tag}</p>
-                      <p className="mt-3 rounded border border-[#2a2a2a] bg-black px-3 py-2 font-mono text-[10px] text-zinc-400">
-                        {project.location}
-                      </p>
-                    </div>
-
-                    <div>
-                      <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#242424] pb-3">
-                        <div>
-                          <p className="font-mono text-[10px] uppercase text-zinc-500">{project.name}.md</p>
-                          <h2 className="mt-2 max-w-3xl text-xl font-black leading-snug text-white md:text-2xl">
-                            {project.headline}
-                          </h2>
-                        </div>
-                        <span className="rounded border border-[#2a2a2a] bg-black px-3 py-1 font-mono text-xs text-zinc-300">
-                          {project.year}
-                        </span>
-                      </div>
-
-                      <div className="mt-3 grid gap-3 xl:grid-cols-[1.15fr_0.85fr]">
-                        <div className="space-y-3">
-                          <p className="text-sm leading-6 text-zinc-300">{project.summary}</p>
-                          <div className="rounded-md border border-[#242424] bg-black p-3">
-                            <p className="font-mono text-xs uppercase text-zinc-500">journal note</p>
-                            <p className="mt-2 text-sm leading-6 text-zinc-200">{project.note}</p>
-                          </div>
-                        </div>
-
-                        <aside className="rounded-md border border-[#242424] bg-black p-3">
-                          <p className="font-mono text-xs uppercase text-zinc-500">build signal</p>
-                          <p className="mt-3 text-sm leading-6 text-zinc-200">{project.build}</p>
-                          <div className="mt-4 flex flex-wrap gap-2">
-                            {project.build.split(', ').map((item) => (
-                              <span
-                                key={item}
-                                className="rounded border border-[#2a2a2a] bg-[#111111] px-2 py-1 font-mono text-xs text-zinc-300"
-                              >
-                                {item}
-                              </span>
-                            ))}
-                          </div>
-                        </aside>
-                      </div>
-
-                      <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-[#242424] pt-3">
-                        <span className="font-mono text-xs uppercase text-zinc-500">links</span>
-                        {project.links.map((link) => (
-                          <a
-                            key={link.label}
-                            className="rounded-md border border-[#333333] bg-black px-3 py-2 font-mono text-xs text-zinc-300 hover:border-white hover:text-white"
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {link.label} -&gt;
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-
             <ProjectRanker projects={projects.map(({ name, slug }) => ({ name, slug }))} />
           </div>
         </div>
@@ -501,7 +457,7 @@ export default function ProjectsPage() {
               <div className="rounded border border-[#242424] bg-black p-3">
                 <p className="font-mono text-xs text-zinc-500">page mode</p>
                 <p className="mt-1 text-xs leading-5 text-zinc-300">
-                  Journal-first storytelling with links out to the original repos and a grading panel underneath.
+                  Journal-first storytelling with links out to the original repos and a local rating panel underneath.
                 </p>
               </div>
             </div>

@@ -88,11 +88,14 @@ export default function ProjectRanker({ projects }: { projects: ProjectOption[] 
     <section id="rankings" className="rounded-md border border-[#2a2a2a] bg-[#090909] p-4">
       <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#2a2a2a] pb-4">
         <div>
-          <p className="font-mono text-xs uppercase text-zinc-500">community.rankings</p>
+          <p className="font-mono text-xs uppercase text-zinc-500">local.ratings</p>
           <h2 className="mt-2 text-2xl font-black text-white md:text-[1.75rem]">Rank the projects.</h2>
+          <p className="mt-2 max-w-md text-xs leading-5 text-zinc-500">
+            A scratchpad, not a live leaderboard — ratings save to your own browser only.
+          </p>
         </div>
         <span className="rounded border border-[#3a3a3a] bg-black px-3 py-1 font-mono text-xs text-zinc-300">
-          {entries.length} votes
+          {entries.length} local {entries.length === 1 ? 'rating' : 'ratings'}
         </span>
       </div>
 

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import SiteNav from '../components/site-nav';
 
 const journals = [
   {
@@ -42,36 +42,10 @@ const journals = [
   },
 ];
 
-const links = [
-  { key: 'H', label: 'Home', href: '/' },
-  { key: 'P', label: 'Projects', href: '/projects' },
-  { key: 'J', label: 'Journals', href: '/journals' },
-];
-
 export default function JournalsPage() {
   return (
-    <main className="min-h-screen bg-[#f6f0e6] text-[#201915]">
-      <nav className="fixed left-0 top-0 z-50 w-full border-b border-[#201915]/10 bg-[#f6f0e6]/88 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
-          <Link className="font-mono text-base font-black text-[#201915]" href="/">
-            MUHAMMAD_ABDULREHMAN
-          </Link>
-          <div className="flex items-center gap-1">
-            {links.map((item) => (
-              <Link
-                key={item.label}
-                className="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-lg font-semibold text-[#7b685d] transition-colors hover:bg-[#efe5d8] hover:text-[#201915]"
-                href={item.href}
-              >
-                <span className="hidden min-h-8 min-w-8 items-center justify-center rounded-md border border-[#d7c8b9] bg-[#fffaf2] px-2 font-mono text-base font-black text-[#a08876] shadow-sm group-hover:text-[#5d4738] sm:flex">
-                  {item.key}
-                </span>
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </nav>
+    <main className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
+      <SiteNav />
 
       <section className="journal-shell mx-auto max-w-5xl px-5 pb-20 pt-32">
         <div className="journal-grid">
