@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { JetBrains_Mono } from 'next/font/google';
+import { JetBrains_Mono, Fraunces } from 'next/font/google';
 import './globals.css';
 import { CommandPaletteProvider } from './components/command-palette';
 import BootSequence from './components/boot-sequence';
@@ -8,6 +8,14 @@ const mono = JetBrains_Mono({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-mono',
+  display: 'swap',
+});
+
+const editorial = Fraunces({
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-editorial',
   display: 'swap',
 });
 
@@ -26,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${mono.variable} font-mono antialiased`}>
+      <body className={`${mono.variable} ${editorial.variable} font-mono antialiased`}>
         <div className="crt-overlay" aria-hidden="true" />
         <CommandPaletteProvider>
           <BootSequence>{children}</BootSequence>
